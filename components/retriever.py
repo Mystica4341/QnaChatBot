@@ -1,0 +1,5 @@
+from haystack_integrations.components.retrievers.qdrant import QdrantEmbeddingRetriever
+from components.documentStore import document_store
+
+#initialize Qdrant retriever
+retriever = QdrantEmbeddingRetriever(document_store)
