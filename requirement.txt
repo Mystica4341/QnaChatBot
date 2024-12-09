@@ -1,1 +1,1 @@
-pip install haystack-ai "datasets>=2.6.1" fastapi uvicorn torch transformers qdrant_client qdrant-haystack google-ai-haystack python-docx
+pip install haystack-ai "datasets>=2.6.1" fastapi uvicorn torch transformers qdrant_client qdrant-haystack google-ai-haystack python-docx python-dotenv

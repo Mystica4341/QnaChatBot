@@ -18,7 +18,7 @@ app.add_middleware(
 async def root():    
     return [{'id': 1,"message": "Hello"}, {'id': 2, "message": "Hello world"}]
 
-app.include_router(answer_router, prefix="/haystack", tags=["haystack"])
+app.include_router(answer_router, prefix="/api", tags=["haystack"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

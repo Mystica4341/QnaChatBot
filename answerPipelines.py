@@ -3,6 +3,11 @@ from components.embedders import text_embedder
 from components.retriever import retriever
 from components.textGenerator import prompt_builder, generator
 from haystack import Pipeline
+from pydantic import BaseModel
+
+# Initialize the model
+class Question(BaseModel):
+  query: str
 
 # Initialize the router
 answer_router = APIRouter()
@@ -22,9 +27,9 @@ awsering_pipeline.connect("prompt_builder.prompt", "llm")
 
 # Run the pipeline
 @answer_router.post("/ask")
-async def ask(question: str):
-    response = awsering_pipeline.run({"text_embedder": {"text": question}, "prompt_builder": {"question": question}})
-    return response["llm"]["replies"][0]
+async def ask(question: Question):
+    response = awsering_pipeline.run({"text_embedder": {"text": question.query}, "prompt_builder": {"question": question.query}})
+    return {'Answer': response["llm"]["replies"][0]}
 
 #ask question
 # question = input("What is your question? ")
